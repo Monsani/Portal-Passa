@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu e Botões</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Menu container alinhado horizontalmente */
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            gap: 10px;
+        }
+
+        /* Estilos dos botões principais do menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropbtn:hover {
+            background-color: #555;
+        }
+
+        /* Conteúdo do dropdown */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            min-width: 160px;
+            border-radius: 5px;
+            top: 100%;
+        }
+
+        /* Links dentro do dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Exibir o dropdown ao passar o mouse */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Botões centrais */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 600px; /* Ajuste conforme necessário */
+            margin-top: 60px;
+        }
+
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Espaçamento entre os botões */
+        }
+
+        .left-column {
+            margin-right: 10px; /* Espaço entre colunas */
+        }
+
+        .square-button {
+            width: 100px;
+            height: 100px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            background-color: #fff;
+            border: 6px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .small-button {
+            width: 25px;
+            height: 25px;
+            font-size: 10px;
+            color: #000;
+            background-color: #eee;
+            border: 2px solid #aaa;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .small-button:hover {
+            background-color: #ddd;
+        }
+
+        /* Estilos do botão de info */
+        .info-button {
+            width: 25px;
+            height: 25px;
+            font-size: 10px;
+            padding: 12px 20px;
+            color: #000;
+            background-color: #eee;
+            border: 2px solid #aaa;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 5px;
+        }
+
+        .info-button:hover {
+            background-color: #ddd;
+        }
+
+        /* Estilos para a lista de itens */
+        .item-list {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            display: none; /* Inicialmente escondida */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu principal no canto esquerdo -->
+    <div class="menu">
+        <!-- Menu "Start" -->
+        <div class="dropdown">
+            <button class="dropbtn">Start</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="selectItem('Frango&S')">Frango</a>
+                <a href="#" onclick="selectItem('Coração')">Coração</a>
+                <a href="#" onclick="selectItem('Queijo')">Queijo</a>
+                <a href="#" onclick="selectItem('Abacaxi')">Abacaxi</a>
+                <a href="#" onclick="selectItem('Apimentado')">Apimentado</a>
+            </div>
+        </div>
+        <!-- Menu "Tabua" -->
+        <div class="dropdown">
+            <button class="dropbtn">Tabua</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="selectItem('Alcatra')">Alcatra</a>
+                <a href="#" onclick="selectItem('Fraldinha')">Fraldinha</a>
+                <a href="#" onclick="selectItem('Peppa')">Peppa</a>
+                <a href="#" onclick="selectItem('Cupim')">Cupim</a>
+                <a href="#" onclick="selectItem('Saroin')">Cupim</a>
+                <a href="#" onclick="selectItem('Costela')">Cupim</a>
+            </div>
+        </div>
+        <!-- Menu "Especial" -->
+        <div class="dropdown">
+            <button class="dropbtn">Especial</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="selectItem('Picanha')">Picanha</a>
+                <a href="#" onclick="selectItem('Cebola')">Cebola</a>
+                <a href="#" onclick="selectItem('Alho')">Alho</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botões de mesa -->
+    <div class="button-container">
+        <div class="left-column">
+            <div class="control-buttons">
+                <button class="small-button" id="bt.onoff2" onclick="toggleBorder('bt.mesa2')">bt.onoff2</button>
+                <button class="info-button" id="bt.info2" onclick="showItems('bt.mesa2')">i</button>
+            </div>
+            <button class="square-button" id="bt.mesa2" onclick="setMesaColor('bt.mesa2')">2</button>
+
+            <div class="control-buttons">
+                <button class="small-button" id="bt.onoff4" onclick="toggleBorder('bt.mesa4')">bt.onoff4</button>
+                <button class="info-button" id="bt.info4" onclick="showItems('bt.mesa4')">i</button>
+            </div>
+            <button class="square-button" id="bt.mesa4" onclick="setMesaColor('bt.mesa4')">4</button>
+
+            <div class="control-buttons">
+                <button class="small-button" id="bt.onoff6" onclick="toggleBorder('bt.mesa6')">bt.onoff6</button>
+                <button class="info-button" id="bt.info6" onclick="showItems('bt.mesa6')">i</button>
+            </div>
+            <button class="square-button" id="bt.mesa6" onclick="setMesaColor('bt.mesa6')">6</button>
+
+            <div class="control-buttons">
+                <button class="small-button" id="bt.onoff8" onclick="toggleBorder('bt.mesa8')">bt.onoff8</button>
+                <button class="info-button" id="bt.info8" onclick="showItems('bt.mesa8')">i</button>
+            </div>
+            <button class="square-button" id="bt.mesa8" onclick="setMesaColor('bt.mesa8')">8</button>
+
+            <div class="control-buttons">
+                <button class="small-button" id="bt.onoff10" onclick="toggleBorder('bt.mesa10')">bt.onoff10</button>
+                <button class="info-button" id="bt.info10" onclick="showItems('bt.mesa10')">i</button>
+            </div>
+            <button class="square-button" id="bt.mesa10" onclick="setMesaColor('bt.mesa10')">10</button>
+        </div>
+
+        <div class="right-column">
+            <div class="control-buttons">
+                <button class="small-button" id="bt.onoff1" onclick="toggleBorder('bt.mesa1')">bt.onoff1</button>
+                <button class="info-button" id="bt.info1" onclick="showItems('bt.mesa1')">i</button>
+            </div>
+            <button class="square-button" id="bt.mesa1" onclick="setMesaColor('bt.mesa1')">1</button>
+
+            <div class="control-buttons">
+                <button class="small-button" id="bt.onoff3" onclick="toggleBorder('bt.mesa3')">bt.onoff3</button>
+                <button class="info-button" id="bt.info3" onclick="showItems('bt.mesa3')">i</button>
+            </div>
+            <button class="square-button" id="bt.mesa3" onclick="setMesaColor('bt.mesa3')">3</button>
+
+            <div class="control-buttons">
+                <button class="small-button" id="bt.onoff5" onclick="toggleBorder('bt.mesa5')">bt.onoff5</button>
+                <button class="info-button" id="bt.info5" onclick="showItems('bt.mesa5')">i</button>
+            </div>
+            <button class="square-button" id="bt.mesa5" onclick="setMesaColor('bt.mesa5')">5</button>
+
+            <div class="control-buttons">
+                <button class="small-button" id="bt.onoff7" onclick="toggleBorder('bt.mesa7')">bt.onoff7</button>
+                <button class="info-button" id="bt.info7" onclick="showItems('bt.mesa7')">i</button>
+            </div>
+            <button class="square-button" id="bt.mesa7" onclick="setMesaColor('bt.mesa7')">7</button>
+
+            <div class="control-buttons">
+                <button class="small-button" id="bt.onoff9" onclick="toggleBorder('bt.mesa9')">bt.onoff9</button>
+                <button class="info-button" id="bt.info9" onclick="showItems('bt.mesa9')">i</button>
+            </div>
+            <button class="square-button" id="bt.mesa9" onclick="setMesaColor('bt.mesa9')">9</button>
+        </div>
+    </div>
+
+    <!-- Lista de itens para exibir -->
+    <div class="item-list" id="item-list"></div>
+
+    <script>
+        const mesas = {
+            "bt.mesa1": [],
+            "bt.mesa2": [],
+            "bt.mesa3": [],
+            "bt.mesa4": [],
+            "bt.mesa5": [],
+            "bt.mesa6": [],
+            "bt.mesa7": [],
+            "bt.mesa8": [],
+            "bt.mesa9": [],
+            "bt.mesa10": []
+        };
+
+        let selectedItem = '';
+
+        function selectItem(item) {
+            selectedItem = item; // Armazena o item selecionado
+            // Redefine selectedItem após 15 segundos
+            setTimeout(() => {
+                selectedItem = ''; // Desmarca o item após 15 segundos
+            }, 15000);
+        }
+
+        function toggleBorder(mesaId) {
+            const mesaButton = document.getElementById(mesaId);
+            const borderColor = mesaButton.style.borderColor === 'black' ? 'gray' : 'black';
+            mesaButton.style.borderColor = borderColor;
+
+            if (borderColor === 'gray') {
+                mesas[mesaId] = []; // Limpa a lista se a borda cinza for ativada
+            }
+        }
+
+        function showItems(mesaId) {
+            const itemList = document.getElementById('item-list');
+            itemList.innerHTML = ''; // Limpa a lista antes de adicionar novos itens
+
+            // Mostra a lista de itens da mesa correspondente
+            if (mesas[mesaId].length > 0) {
+                itemList.style.display = 'block';
+                itemList.innerHTML = mesas[mesaId].map(item => `<div>${item.text} - ${item.time}</div>`).join('');
+            } else {
+                itemList.style.display = 'none';
+            }
+        }
+
+        function setMesaColor(mesaId) {
+            const mesaButton = document.getElementById(mesaId);
+            mesaButton.style.backgroundColor = 'lightblue'; // Muda a cor para azul claro
+            setTimeout(() => {
+                mesaButton.style.backgroundColor = ''; // Reseta a cor após 0,5 segundos
+            }, 500);
+
+            // Adiciona o item selecionado à mesa
+            if (selectedItem) {
+                const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                mesas[mesaId].push({ text: selectedItem, time: currentTime });
+                showItems(mesaId); // Atualiza a exibição da lista de itens
+            }
+        }
+    </script>
+</body>
+</html>
